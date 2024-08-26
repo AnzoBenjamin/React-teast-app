@@ -34,7 +34,7 @@ const TestList = () => {
         <ul className="list-disc pl-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-fit">
           {tests.map((test, index) => (
             <li key={test.id} className="mb-3 card bg-base-100 shadow-xl w-fit">
-              <Link to={`/app/user/tests/${index}`} className=" card-body">
+              <Link to={`/app/tests/${index}`} className=" card-body">
                 {test.category}
               </Link>
             </li>
