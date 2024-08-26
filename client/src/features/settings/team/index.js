@@ -87,7 +87,7 @@ function Team(){
     return(
         <>
             
-            <TitleCard title="Active Members" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
+            <TitleCard title="Active Organisations" topMargin="mt-2" TopSideButtons={<TopSideButtons />}>
 
                 {/* Team Member list in table format loaded constant */}
             <div className="overflow-x-auto w-full">
