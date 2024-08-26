@@ -9,7 +9,7 @@ const TopSideButtons = () => {
     const dispatch = useDispatch()
 
     const addNewTeamMember = () => {
-        dispatch(showNotification({message : "Add New Member clicked", status : 1}))
+        dispatch(showNotification({message : "Add New Organisation clicked", status : 1}))
     }
 
     return(
