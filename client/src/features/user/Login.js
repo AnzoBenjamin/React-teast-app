@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import LandingIntro from "./LandingIntro";
 import ErrorText from "../../components/Typography/ErrorText";
 import InputText from "../../components/Input/InputText";
-import { setRole } from "../common/roleSlice";
 function Login() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loginObj, setLoginObj] = useState({ password: "", emailId: "" });
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -27,30 +21,7 @@ function Login() {
       // Simulate API call and set token
       localStorage.setItem("token", "DummyTokenHere");
       setLoading(false);
-      navigateToDashboard();
-    }
-  };
-
-  const navigateToDashboard = () => {
-    const role = localStorage.getItem("role");
-
-    if (role) {
-      switch (role) {
-        case "user":
-          navigate("/app/user/dashboard");
-          break;
-        case "organisation":
-          navigate("/app/organisation/dashboard");
-          break;
-        case "admin":
-          navigate("/app/admin/dashboard");
-          break;
-        default:
-          navigate("/app/welcome");
-          break;
-      }
-    } else {
-      navigate("/app/welcome");
+      window.location.href = '/app/welcome'
     }
   };
 

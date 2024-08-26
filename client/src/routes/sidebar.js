@@ -13,22 +13,9 @@ import BellIcon from "@heroicons/react/24/outline/BellIcon";
 const iconClasses = `h-6 w-6`;
 const submenuIconClasses = `h-5 w-5`;
 
-const getBasePath = (role) => {
-  switch (role) {
-    case "user":
-      return "/app/user";
-    case "organisation":
-      return "/app/organisation";
-    case "admin":
-      return "/app/admin";
-    default:
-      return "/app";
-  }
-};
-
 const useRoutes = () => {
   const role = localStorage.getItem("role");
-  const basePath = getBasePath(role);
+  const basePath = '/app';
 
   const allRoutes = [
     {

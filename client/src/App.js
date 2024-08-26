@@ -16,11 +16,7 @@ const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const Register = lazy(() => import("./pages/Register"));
 const Documentation = lazy(() => import("./pages/Documentation"));
 const ChooseUser = lazy(() => import("./pages/ChooseUser"));
-const UserDashboard = lazy(() => import("./pages/protected/UserDashboard"));
-const OrganisationDashboard = lazy(() =>
-  import("./pages/protected/OrganisationDashboard")
-);
-const AdminDashboard = lazy(() => import("./pages/protected/AdminDashboard"));
+
 // Initialize app
 initializeApp();
 
@@ -28,31 +24,10 @@ initializeApp();
 
 function App() {
 
-  const getRoutesForRole = () => {
-    const role = localStorage.getItem("role");
-    switch (role) {
-      case "user":
-        return (
-          <Route path="/app/user/*" element={<Layout />}>
-            <Route path="dashboard" element={<UserDashboard />} />
-          </Route>
-        );
-      case "organisation":
-        return (
-          <Route path="/app/organisation/*" element={<Layout />}>
-            <Route path="dashboard" element={<OrganisationDashboard />} />
-          </Route>
-        );
-      case "admin":
-        return (
-          <Route path="/app/admin/*" element={<Layout />}>
-            <Route path="dashboard" element={<AdminDashboard />} />
-          </Route>
-        );
-      default:
-        return <Route path="/" element={<ChooseUser />} />;
-    }
-  };
+  useEffect(() => {
+    // 👆 daisy UI themes initialization
+    themeChange(false)
+  }, [])
 
 
   return (
@@ -62,8 +37,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/app/*" element={<Layout />} />
         <Route path="/documentation" element={<Documentation />} />
-        {getRoutesForRole()}
       </Routes>
     </Router>
   );
